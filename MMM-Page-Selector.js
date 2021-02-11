@@ -187,7 +187,7 @@ Module.register("MMM-Page-Selector", {
 			MM.getModules()
 				.enumerate(module => {
 					if(!neverHideIds.includes(module.data.identifier)){
-						module.hide(500, (out) => {
+						module.hide(0, (out) => {
 							self.debug("Hiding module:", module, "... Got back", out)
 						}, { lockString: self.identifier });
 						self.removeClasses(self.getModuleRef(module))
@@ -200,7 +200,7 @@ Module.register("MMM-Page-Selector", {
 					self.moveRefToLoc(module.ref, module.position);
 					if (module.mmModule !== undefined) {
 						self.debug("Trying to show module:", module)
-						module.mmModule.show(500, (out) => {
+						module.mmModule.show(0, (out) => {
 							self.debug("Showing module:", module, "... Got back", out)
 						}, { lockString: self.identifier });
 					} else {
@@ -354,7 +354,7 @@ Module.register("MMM-Page-Selector", {
 				}
 			}else{
 				if (module.mmModule !== undefined) {
-					module.mmModule.show(500, { lockString: self.identifier });
+					module.mmModule.show(0, { lockString: self.identifier });
 				} else {
 					Log.error(`Tried to show ${module.identifier} but the module is undefined. Check to make sure this module is installed correctly.`);
 				}
